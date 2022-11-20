@@ -70,7 +70,7 @@ def get_model_name(env, test_mode=False):
     """
     if env == "dev" or test_mode:
         resource_name_suffix = _get_resource_name_suffix(test_mode)
-        return f"mlops-aws-model{resource_name_suffix}"
+        return f"mlops-gcp-model{resource_name_suffix}"
     else:
         # Read ml model name from databricks-config
-        return _get_ml_config_value(env, "mlops-aws_model_name")
+        return _get_ml_config_value(env, "mlops-gcp_model_name")

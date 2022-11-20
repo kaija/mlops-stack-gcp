@@ -1,11 +1,11 @@
 resource "databricks_mlflow_model" "registered_model" {
-  name = "${local.env_prefix}mlops-aws-model"
+  name = "${local.env_prefix}mlops-gcp-model"
   depends_on = [
     databricks_job.batch_inference_job,
     databricks_job.model_training_job
   ]
   description = <<EOF
-MLflow registered model for the "mlops-aws" ML Project. See the corresponding [Git repo](${var.git_repo_url}) for details on the project.
+MLflow registered model for the "mlops-gcp" ML Project. See the corresponding [Git repo](${var.git_repo_url}) for details on the project.
 
 Links:
 * [Git Repo](${var.git_repo_url}): contains ML code for the current project.

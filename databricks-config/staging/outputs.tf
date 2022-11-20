@@ -5,31 +5,31 @@
 
 # Batch inference job
 
-output "mlops-aws_batch_inference_job_id" {
+output "mlops-gcp_batch_inference_job_id" {
   value = databricks_job.batch_inference_job.id
 }
 
 
 # Mlflow experiment
 
-output "mlops-aws_experiment_id" {
+output "mlops-gcp_experiment_id" {
   value = databricks_mlflow_experiment.experiment.id
 }
 
-output "mlops-aws_experiment_name" {
+output "mlops-gcp_experiment_name" {
   value = databricks_mlflow_experiment.experiment.name
 }
 
 
 # Model Registry registered model
 
-output "mlops-aws_model_name" {
+output "mlops-gcp_model_name" {
   value = databricks_mlflow_model.registered_model.name
 }
 
 
 # Training job
 
-output "mlops-aws_training_job_id" {
+output "mlops-gcp_training_job_id" {
   value = databricks_job.model_training_job.id
 }

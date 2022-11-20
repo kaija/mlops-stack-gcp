@@ -1,4 +1,4 @@
-# mlops-aws
+# mlops-gcp
 
 This directory contains an ML project based on the default
 [Databricks MLOps Stack](https://github.com/databricks/mlops-stack),

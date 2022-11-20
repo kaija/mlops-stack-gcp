@@ -1,13 +1,12 @@
 terraform {
-  // The `backend` block below configures the s3 backend
-  // (docs: https://www.terraform.io/language/settings/backends/s3)
-  // for storing Terraform state in an AWS S3 bucket. You can run the setup scripts in mlops-setup-scripts/terraform to
-  // provision the S3 bucket referenced below and store appropriate credentials for accessing the bucket from CI/CD.
-  backend "s3" {
-    bucket         = "mlops-aws-tfstate"
+  // The `backend` block below configures the gcs backend
+  // (docs: https://developer.hashicorp.com/terraform/language/settings/backends/gcs)
+  // for storing Terraform state in an GCP gcs bucket. You can run the setup scripts in mlops-setup-scripts/terraform to
+  // provision the gcs bucket referenced below and store appropriate credentials for accessing the bucket from CI/CD.
+  backend "gcs" {
+    bucket         = "mlops-gcp-tfstate"
     key            = "staging.terraform.tfstate"
-    dynamodb_table = "mlops-aws-tfstate-lock"
-    region         = "us-east-1"
+    location       = "us-west1"
   }
   required_providers {
     databricks = {

@@ -60,12 +60,12 @@ Otherwise, e.g. if iterating on ML code for a new project, follow the steps belo
 * Follow the [UI workflow](https://docs.databricks.com/repos/work-with-notebooks-other-files.html#clone-a-remote-git-repository)
   for creating a repo, but uncheck the "Create repo by cloning a Git repository" checkbox.
 * Install the `dbx` CLI via `pip install --upgrade dbx`
-* Run `databricks configure --profile mlops-aws-dev --token --host <your-dev-workspace-url>`, passing the URL of your dev workspace.
+* Run `databricks configure --profile mlops-gcp-dev --token --host <your-dev-workspace-url>`, passing the URL of your dev workspace.
   This should prompt you to enter an API token
 * [Create a personal access token](https://docs.databricks.com/dev-tools/api/latest/authentication.html#generate-a-personal-access-token)
   in your dev workspace and paste it into the prompt from the previous step
 * From within the root directory of the current project, use the [dbx sync](https://dbx.readthedocs.io/en/latest/guides/python/devloop/mixed/#using-dbx-sync-repo-for-local-to-repo-synchronization) tool to copy code files from your local machine into the Repo by running
-  `dbx sync repo --profile mlops-aws-dev --source . --dest-repo your-repo-name`, where `your-repo-name` should be the last segment of the full repo name (`/Repos/username/your-repo-name`)
+  `dbx sync repo --profile mlops-gcp-dev --source . --dest-repo your-repo-name`, where `your-repo-name` should be the last segment of the full repo name (`/Repos/username/your-repo-name`)
 
 #### Running code on Databricks
 You can iterate on ML code by running the provided `notebooks/Train.py` notebook on Databricks using

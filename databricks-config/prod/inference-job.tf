@@ -1,5 +1,5 @@
 resource "databricks_job" "batch_inference_job" {
-  name = "${local.env_prefix}mlops-aws-batch-inference-job"
+  name = "${local.env_prefix}mlops-gcp-batch-inference-job"
 
   # Optional validation: we include it here for convenience, to help ensure that the job references a notebook
   # that exists in the current repo. Note that Terraform >= 1.2 is required to use these validations
@@ -13,6 +13,7 @@ resource "databricks_job" "batch_inference_job" {
   new_cluster {
     num_workers   = 3
     spark_version = "11.0.x-cpu-ml-scala2.12"
+    #TODO change node_type_id
     node_type_id  = "i3.xlarge"
     # We set the job cluster to single user mode to enable your batch inference job to access
     # the Unity Catalog.
@@ -27,7 +28,7 @@ resource "databricks_job" "batch_inference_job" {
       env = local.env
       # TODO: Specify input and output table names for batch inference here
       input_table_name  = ""
-      output_table_name = "mlopsaws_predictions"
+      output_table_name = "mlopsgcp_predictions"
     }
   }
 

@@ -38,10 +38,10 @@ assert env != "None", "env notebook parameter must be specified"
 assert model_uri != "", "model_uri notebook parameter must be specified"
 
 github_repo = dbutils.secrets.get(
-    f"{env}-mlops-aws-cd-credentials", "github_repo"
+    f"{env}-mlops-gcp-cd-credentials", "github_repo"
 )
 token = dbutils.secrets.get(
-    f"{env}-mlops-aws-cd-credentials", "token"
+    f"{env}-mlops-gcp-cd-credentials", "token"
 )
 cd_trigger_url = f"https://api.github.com/repos/{github_repo}/actions/workflows/deploy-model-{env}.yml/dispatches"
 authorization = f"token {token}"

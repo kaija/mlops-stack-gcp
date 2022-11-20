@@ -1,12 +1,12 @@
 experiment:
-  name: "/Shared/mlops-aws"
+  name: "/Shared/mlops-gcp"
   tracking_uri: "sqlite:///mlruns.db"
   artifact_location: "./mlruns"
 
 model_registry:
   # Specifies the name of the Registered Model to use when registering a trained model to
   # the MLflow Model Registry
-  model_name: {{MODEL_NAME|default('mlops-aws_model')}}
+  model_name: {{MODEL_NAME|default('mlops-gcp_model')}}
 
 # Override the default train / validation / test dataset split ratios
 SPLIT_RATIOS: [0.80, 0.10, 0.10]

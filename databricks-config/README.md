@@ -93,7 +93,7 @@ a batch inference job, like:
 
 ```$xslt
 resource "databricks_job" "batch_inference_job" {
-  name = "mlops-aws batch inference job"
+  name = "mlops-gcp batch inference job"
 
   new_cluster {
     num_workers   = 3
@@ -108,7 +108,7 @@ resource "databricks_job" "batch_inference_job" {
 }
 ```
 
-The example above defines a Databricks job with name `mlops-aws batch inference job`
+The example above defines a Databricks job with name `mlops-gcp batch inference job`
 that runs the notebook under `notebooks/BatchInference.py` to regularly apply your ML model
 for batch inference. 
 
