@@ -5,8 +5,7 @@ terraform {
   // provision the gcs bucket referenced below and store appropriate credentials for accessing the bucket from CI/CD.
   backend "gcs" {
     bucket         = "mlops-gcp-tfstate"
-    key            = "prod.terraform.tfstate"
-    location       = "us-west1"
+    prefix         = "prod"
   }
   required_providers {
     databricks = {

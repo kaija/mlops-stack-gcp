@@ -1,4 +1,4 @@
-name: ML Code Tests for mlops-aws
+name: ML Code Tests for mlops-gcp
 on:
   workflow_dispatch:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - 'databricks-config/**'
 
 env:
-  DATABRICKS_HOST: https://your-staging-workspace.cloud.databricks.com
+  DATABRICKS_HOST: https://6837671528024691.1.gcp.databricks.com
   NODE_TYPE_ID: i3.xlarge
   DATABRICKS_TOKEN: ${{secrets.STAGING_WORKSPACE_TOKEN}}
   
@@ -59,7 +59,7 @@ jobs:
                 "permission_level": "CAN_VIEW"
               }
             ]
-          run-name: mlops-aws Integration Test
+          run-name: mlops-gcp Integration Test
           notebook-params-json: >
             {
               "env": "staging",

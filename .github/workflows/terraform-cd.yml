@@ -1,6 +1,6 @@
 # This GitHub workflow deploys Terraform resources (ML resource config and more)
 # defined under databricks-config, when PRs are merged into the default branch
-name: Terraform Deployment for mlops-aws
+name: Terraform Deployment for mlops-gcp
 
 on:
   push:
@@ -16,10 +16,10 @@ defaults:
 
 jobs:
   staging:
-    concurrency: mlops-aws-staging-terraform-job
+    concurrency: mlops-gcp-staging-terraform-job
     runs-on: ubuntu-20.04
     env:
-      DATABRICKS_HOST: https://your-staging-workspace.cloud.databricks.com
+      DATABRICKS_HOST: https://6837671528024691.1.gcp.databricks.com
       DATABRICKS_TOKEN: ${{secrets.STAGING_WORKSPACE_TOKEN}}
     steps:
       - uses: actions/checkout@v3
@@ -75,11 +75,11 @@ jobs:
             git push
           fi
   prod:
-    concurrency: mlops-aws-prod-terraform-job
+    concurrency: mlops-gcp-prod-terraform-job
     needs: staging
     runs-on: ubuntu-20.04
     env:
-      DATABRICKS_HOST: https://your-prod-workspace.cloud.databricks.com
+      DATABRICKS_HOST: https://6837671528024691.1.gcp.databricks.com
       DATABRICKS_TOKEN: ${{secrets.PROD_WORKSPACE_TOKEN}}
     steps:
       - uses: actions/checkout@v3
