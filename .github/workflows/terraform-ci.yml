@@ -42,6 +42,7 @@ jobs:
           # name AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY. We set corresponding environment variables to authenticate to
           # the s3 backend as described in https://www.terraform.io/language/settings/backends/s3#credentials-and-shared-configuration
           echo "GOOGLE_CREDENTIALS=${{secrets.GOOGLE_CREDENTIALS}}" >> "$GITHUB_ENV"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}" >> "$GITHUB_ENV"
       - name: Terraform Init
         id: init
         run: terraform -chdir=staging init
@@ -106,6 +107,7 @@ jobs:
       - name: Configure Terraform state backend authentication
         run: |
           echo "GOOGLE_CREDENTIALS=${{secrets.GOOGLE_CREDENTIALS}}" >> "$GITHUB_ENV"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}" >> "$GITHUB_ENV"
       - name: Terraform Init
         id: init
         run: terraform -chdir=prod init
