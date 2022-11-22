@@ -29,11 +29,6 @@ jobs:
         id: fmt
         run: terraform fmt -check -recursive -diff
         continue-on-error: true
-      - id: 'auth'
-        name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@v1'
-        with:
-          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
       - name: Configure Terraform state backend authentication
         run: |
           # Below we assume you've run the setup scripts under the cicd-setup-scripts directory
@@ -43,6 +38,11 @@ jobs:
           # the s3 backend as described in https://www.terraform.io/language/settings/backends/s3#credentials-and-shared-configuration
           echo "GOOGLE_CREDENTIALS=${{secrets.GOOGLE_CREDENTIALS}}" >> "$GITHUB_ENV"
           echo "GOOGLE_APPLICATION_CREDENTIALS=${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}" >> "$GITHUB_ENV"
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
       - name: Terraform Init
         id: init
         run: terraform -chdir=staging init
