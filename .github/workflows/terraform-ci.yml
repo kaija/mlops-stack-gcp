@@ -31,11 +31,10 @@ jobs:
         continue-on-error: true
       - name: Configure Terraform state backend authentication
         run: |
-          # Below we assume you've run the setup scripts under the cicd-setup-scripts directory
-          # to create an AWS S3 bucket and IAM user with permission to access the bucket, and stored
-          # an access key for the IAM user as Github Actions secrets with
-          # name AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY. We set corresponding environment variables to authenticate to
-          # the s3 backend as described in https://www.terraform.io/language/settings/backends/s3#credentials-and-shared-configuration
+          # https://developers.google.com/accounts/docs/application-default-credentials
+          # https://cloud.google.com/iam/docs/creating-managing-service-account-keys#iam-service-account-keys-create-gcloud
+          # https://github.com/google-github-actions/auth
+          # https://docs.gcp.databricks.com/dev-tools/ci-cd/ci-cd-github.html
           echo "GOOGLE_CREDENTIALS=${{secrets.GOOGLE_CREDENTIALS}}" >> "$GITHUB_ENV"
           echo "GOOGLE_APPLICATION_CREDENTIALS=${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}" >> "$GITHUB_ENV"
       - id: 'auth'
